@@ -1,0 +1,10 @@
+.course-goal__list {
+  width: 70%;
+}
+
+.course-goal__list ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}

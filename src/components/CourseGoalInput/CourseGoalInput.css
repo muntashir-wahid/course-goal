@@ -1,0 +1,37 @@
+.course-goal__input {
+  background-color: #fff;
+  width: 60%;
+  padding: 2.2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgb(63, 63, 63);
+}
+
+.course-goal__form label {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-bottom: .8rem;
+}
+
+.course-goal__form input {
+  width: 90%;
+  display: block;
+  margin-bottom: .8rem;
+  padding: .4rem;
+  border: 1px solid black;
+}
+
+.course-goal__form input:focus{
+  background-color: #fad0ec;
+  border-color: #8B005D;
+  outline: none;
+}
+
+.btn-submit {
+  border: none;
+  background-color: #8B005D;
+  color: white;
+  padding: .8rem 1.2rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+}

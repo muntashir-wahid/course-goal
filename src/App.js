@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import CourseGoalList from "./components/CourseGoalList/CourseGoalList";
+import CourseGoalInput from "./components/CourseGoalInput/CourseGoalInput";
+
+const DUMMY_COURSE_GOALS = [
+  { id: "cg01", goal: "Do all exercises!" },
+  { id: "cg02", goal: "Finish the course!" },
+];
 
 function App() {
+  const [courseGoalList, setCourseGoalList] = useState(DUMMY_COURSE_GOALS);
+  const savedCourseGoalHandler = (newCourseGoal) => {
+    setCourseGoalList((preCourseGoals) => {
+      const courseGoals = [newCourseGoal, ...preCourseGoals];
+      return courseGoals;
+    });
+  };
+  const cancledGoalHandler = (cancledGoal) => {
+    setCourseGoalList((prevCourseGoals) => {
+      const courseGoals = prevCourseGoals.filter(
+        (courseGoal) => courseGoal.goal !== cancledGoal
+      );
+      return courseGoals;
+    });
+  };
+
+  let content = (
+    <p style={{ textAlign: "cente" }}>No goal found.May be add one!!</p>
+  );
+  if (courseGoalList.length > 0) {
+    content = (
+      <CourseGoalList
+        courseGoals={courseGoalList}
+        onCancleGoal={cancledGoalHandler}
+      />
+    );
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="main">
+      <CourseGoalInput onSaveCourseGoal={savedCourseGoalHandler} />
+      {content}
+    </main>
   );
 }
 
